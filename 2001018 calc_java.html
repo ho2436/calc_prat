@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calc_java</title>
+    <style>
+        
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+            color: inherit; 
+            text-decoration: inherit;
+        }  
+        .table_Set{ 
+            height: 100%;
+            width: 100%;
+            color: black;
+            font-size: 16px;        }
+        .table_Set li:nth-last-child(1){
+            width: 50%;
+        }
+        .table_Set li:nth-last-child(2){
+            width: 50%;
+        }
+        .table_Set li{ 
+            background-color:darkgray; 
+            float: left;
+            width:25%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            box-sizing:border-box;
+            
+            height: 100%;
+            border: 1px solid black;
+            
+        }
+        form input:nth-child(1){
+            padding-top:50px;
+            padding-left: 20px;
+            z-index: 1;
+/*            background-color: bisque; */
+            
+             
+        }
+        .table_Set ul .dot{
+            color: red;
+        }
+        form input:nth-child(2){
+             
+            top: 20px;;
+            right: 0;
+             
+            padding-right: 20px;
+            z-index: 1; 
+/*            background-color: bisque;*/
+            height: 5%;
+            font-size: 15px;
+            text-align: right;
+/*            text-shadow: 1px .5px 0.5px;*/
+            opacity: .7;
+        }
+        form input:nth-child(3){
+               
+            top: 20px;;
+            right: 0;
+            display: inline;
+            padding-right: 20px;
+            z-index: 1;  
+            height: 5%;
+            font-size: 15px;
+            text-align: right; 
+            opacity: 0.7;
+        }
+            
+        form input{
+            background-color:darkgray;
+            color: black;
+            font-weight: bold;
+            opacity: 1;
+            font-size: 36px; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+        form{
+            width: 100vh;
+           height: 150px;
+            
+        }
+        form:after{
+            content: '';
+            clear: both;
+            display: block;
+            
+        }
+        .temp_1{
+            display: none;
+            
+            opacity: 0;
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0; 
+        }
+        .table_Set li a{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+         
+    </form>
+     
+    <div class="table_Set"><ul>
+        <li class="cleaR" ><a href="#">C</a></li>
+        <li class="calc_T" ><a href="#">/</a></li>
+        <li class="calc_T" ><a href="#">*</a></li>
+        <li class="rel_show" ><a href="#">rel_show</a></li>
+        <li class="num0" ><a href="#">7</a></li>
+        <li class="num0" ><a href="#">8</a></li>
+        <li class="num0" ><a href="#">9</a></li>
+        <li class="calc_T" ><a href="#">-</a></li>
+        <li class="num0" ><a href="#">4</a></li>
+        <li class="num0" ><a href="#">5</a></li>
+        <li class="num0" ><a href="#">6</a></li>
+        <li class="calc_T" ><a href="#">+</a></li>
+        <li class="num0" ><a href="#">1</a></li>
+        <li class="num0" ><a href="#">2</a></li>
+        <li class="num0" ><a href="#">3</a></li>
+        <li class="enTer" ><a href="#">enter</a></li>
+        <li class="num0" ><a href="#">0</a></li>
+        <li class="dot" ><a href="#">.</a></li> 
+        </ul></div>
+    <div class="temp_1"></div>
+    <script src="JS/jquery-3.4.1.min.js"></script>
+    <script>
+        
+//        var i = document.querySelector('.table_Set ul li a');
+//        var i2=document.querySelector('form input');
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        
+//        var a2 = false; 
+//        var a3 = false; 
+//        
+////        $('.table_Set li .num').on('click',function(){
+////            
+////        var q = $('.table_Set li .num');
+////            
+////        if($(this).hasClass('on')){
+////          
+////            var i = $(this).text(); 
+////            var i2 = $('form input').eq(0).val();  
+////             
+////            var i2_eq1 = $('form input').eq(1).val();  
+////            
+////            $('form input').eq(0).val(i2+i); 
+////            $('form input').eq(1).val(i2_eq1+i); 
+////           a2 = false;
+////             
+////            localStorage.setItem('put3',i2_eq1+i);  
+////         
+////        }else{ 
+////         
+////            var i = $(this).text(); 
+////            var i2 = $('form input').eq(0).val();
+////            $('form input').eq(0).val(i2+i); 
+////            a2 = false;
+////            localStorage.setItem('put1',i2+i); } 
+////         }) 
+//        
+//        
+//        $('.table_Set .num').on('click',function(){
+//            $('form input').eq(2).hide();
+//        var q = $('.table_Set .num');
+//            
+//        if($(this).hasClass('on')){
+//          
+//            var i = $(this).children().text(); 
+//            var i2 = $('form input').eq(0).val();  
+//             
+//            var i2_eq1 = $('form input').eq(1).val();  
+//            
+//            $('form input').eq(0).val(i2+i); 
+//            $('form input').eq(1).val(i2+i); 
+//           a2 = false;
+//             
+//            localStorage.setItem('put3',i2_eq1+i);  
+//         
+//        }else{ 
+//         
+//            var i = $(this).children().text(); 
+//            var i2 = $('form input').eq(0).val();
+//            $('form input').eq(0).val(i2+i); 
+//            $('form input').eq(1).val(i2+i); 
+//            a2 = false;
+//            localStorage.setItem('put1',i2+i); }
+////            localStorage.setItem('put1',i2+i+"px"); }
+//         }) 
+//        
+//        $('.table_Set .calc_T').on('click',function(){
+//            $('form input').eq(2).hide();
+//            if(a2==false){
+//            var i = $(this).children().text(); 
+//            var i2 = $('form input').val();
+//            $('form input').eq(0).val(i2+" "+i+" "); 
+//            $('form input').eq(1).val(i2+" "+i+" "); 
+//            
+//            localStorage.setItem('put2'," "+i+" "); 
+//            $('.table_Set .num').addClass('on');
+//            a2 = true;
+//            a3 = false;
+//            
+//            }
+//            
+//            
+//            
+//            
+//        })  
+//        
+//        $('.table_Set .dot').on('click',function(){
+//             $('form input').eq(2).hide();
+//            if(a3==false){ 
+//             var i = $(this).children().text(); 
+//            var i2 = $('form input').eq(0).val();  
+//             
+//            var i2_eq1 = $('form input').eq(1).val();  
+//            
+//            $('form input').eq(0).val(i2+i); 
+//            $('form input').eq(1).val(i2+i); 
+//            a3 = false;        
+//            a3 = true;} 
+//        }) 
+//        
+//        $('form input').eq(2).on('click',function(){
+//            var i = $(this).children().text(); 
+//            var i2 = $('form input').eq(0).val();  
+//             
+//            var i2_eq1 = $('form input').eq(1).val();  
+//            
+//            $('form input').eq(0).val(i2+i); 
+//            $('form input').eq(1).val(i2+i);  
+//        }) 
+//        
+//        
+//        $('.table_Set .enTer').on('click',function(){
+////            
+//////            var i = $(this).text(); 
+////            var i = $('form input').val();
+////          console.log(i)
+//////            var w =  $('.temp_1').css({'z-index':'calc(52 + 5 )'});
+//////            console.log(w);
+////            $('.temp_1').css({'width':'calc('+i+')'});
+////            console.log($('.temp_1').css('width'));
+////            console.log('calc('+i+')');
+////    
+//////            var t = $('.temp_1').css('opacity');
+////            var t = $('.temp_1').width();
+////            
+//            
+//          var i =  localStorage.getItem('put1')
+//          var i2 =  localStorage.getItem('put2')
+//          var i3 =  localStorage.getItem('put3')
+//            
+//            
+////            $('.temp_1').css({'margin-left':'calc('+i+i2+i3+')'});
+////            console.log(i,i2,i3);
+////            var t2 = eval(i+i2+i3); 
+//            var res_form = $('form input').eq(0).val();
+//            var rel1_0 = localStorage.setItem('rel1_0',res_form);
+//            var t2 = eval(res_form);
+//            var rel1 = localStorage.setItem('rel1',t2);
+//            
+//          
+////            var t = $('.temp_1').left;
+//            console.log(t2)
+//            
+//           
+//            
+//            $('form input').eq(0).val(t2); 
+//            $('form input').eq(1).val(i3+" = "+t2); 
+//            $('form input').eq(2).show().val(t2); 
+//            
+////            localStorage.setItem('put1',i); 
+//        }) 
+//         
+//        $('.table_Set li').eq(0).on('click',function(){
+// 
+////            var i = $('form input').val();
+////           
+////            var t = $('.temp_1').css('z-index');
+//           $('form input').eq(2).hide();
+//            $('form input').val("");  
+//            localStorage.removeItem('put1'); 
+//            localStorage.removeItem('put2'); 
+//            localStorage.removeItem('put3'); 
+//            $('.table_Set .num').removeClass('on');
+//            a2 = false;
+//        })
+//        var res_i=0
+//        $('.table_Set .rel_show').on('click',function(){
+//            res_i++
+//            var i2 = res_i%3;
+//            var i3 =(res+i2);
+//        var res1 = localStorage.getItem('rel1');
+//        $('form input').val(i3); 
+//            console.log(res_i,i2)
+//            
+//        a2 = false;
+//        }) 
+//        
+        
+        
+     var firstEntry = '', secondEntry = '',
+         operator, result;
+        
+        $('.num0').on('click',function(){
+            
+            var txt = $(this).children().text();
+            
+            firstEntry += txt;
+            $('form input').eq(0).val(firstEntry);
+            console.log(firstEntry);
+        });
+        
+        function calc(){
+            
+                secondEntry = Number(secondEntry);
+                firstEntry = Number(firstEntry);
+           
+            switch(operator){
+                case '+' : result = secondEntry + firstEntry;
+                break;
+                case '-' : result = secondEntry - firstEntry;
+                break;
+                case '*' : result = secondEntry * firstEntry;
+                break;
+                case '/' : result = secondEntry / firstEntry;
+                break;
+            }
+            console.log(result)
+           
+        }
+        $('.calc_T').on('click',function(){
+             if(operator == "+"||operator == '*'||operator == "-"||operator == "/"){
+                 console.log(secondEntry,firstEntry);
+                 calc();
+                  secondEntry =  result;
+//                  result = secondEntry;
+                  firstEntry = '';
+                  console.log(secondEntry,firstEntry);
+           
+           }else{
+         
+
+            operator = $(this).children().text();
+            
+         $('form input').eq(1).val(firstEntry+operator);
+                secondEntry = firstEntry;
+
+              if(result != null){
+
+                  secondEntry = result;
+                  firstEntry = '';
+                  
+                  
+
+            }else{
+                secondEntry = firstEntry;
+                firstEntry = '';
+
+            }}
+//            $(this).children().addClass(on);
+//            if($(this).children().hasClass(on)){
+//                $(this).children().addClass(on);
+//            }
+        });
+        
+        
+        $('.enTer').on('click',function(){
+            calc();
+             operator = '';
+           $('form input').eq(0).val(result); 
+        });
+         $('.cleaR').on('click',function(){
+              firstEntry = '';
+              secondEntry = '';
+              operator='';
+              result = ''; console.log(firstEntry,operator,secondEntry,result);
+              $('form input').eq(0).val(""); 
+         });
+        
+        
+        
+    </script>
+    
+    
+</body>
+</html>
